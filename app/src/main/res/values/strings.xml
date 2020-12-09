@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Pomodoro</string>
+    <string name="expectation_of_life">expectationOfLife</string>
+    <string name="pomodoro">pomodoro</string>
+</resources>

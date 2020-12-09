@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/pomodoroListFragment"
+    >
+
+    <fragment
+        android:id="@+id/pomodoroListFragment"
+        android:name="com.sugaas.pomodoro.PomodoroListFragment"
+        android:label="fragment_pomodoro_list"
+        >
+        <action
+            android:id="@+id/action_pomodolo_to_expectation"
+            app:destination="@id/expectationOfLifeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/expectationOfLifeFragment"
+        android:name="com.sugaas.pomodoro.ExpectationOfLifeFragment"
+        android:label="fragment_expectation_of_lice" />
+
+
+</navigation>
