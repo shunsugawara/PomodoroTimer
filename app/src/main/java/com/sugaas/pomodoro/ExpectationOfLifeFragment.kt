@@ -31,7 +31,6 @@ class ExpectationOfLifeFragment : Fragment() {
             liveData.value = i.toString()
         }
 
-
         return binding.root
     }
 }
