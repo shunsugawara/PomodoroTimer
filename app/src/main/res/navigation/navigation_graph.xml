@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/pomodoroListFragment"
-        android:name="com.sugaas.pomodoro.PomodoroListFragment"
+        android:name="com.sugaas.pomodoro.pomodoro.PomodoroListFragment"
         android:label="fragment_pomodoro_list"
         >
         <action

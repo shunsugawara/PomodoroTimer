@@ -4,10 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentPagerAdapter
-import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.sugaas.pomodoro.databinding.ActivityMainBinding
+import com.sugaas.pomodoro.pomodoro.PomodoroListFragment
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -28,8 +27,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
-
         val binding = ActivityMainBinding.inflate(LayoutInflater.from(this))
         setContentView(binding.root)
 
@@ -38,7 +35,7 @@ class MainActivity : AppCompatActivity() {
                 this
             ) {
                 override fun createFragment(position: Int): Fragment {
-                    return if (position == 0) {
+                    return if (position == TabContent.POMODORO.ordinal) {
                         PomodoroListFragment()
                     } else {
                         ExpectationOfLifeFragment()
@@ -46,7 +43,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 override fun getItemCount(): Int {
-                    return 2
+                    return TabContent.values().count()
                 }
             }
         binding.fragmentsContainer.adapter = adapter
