@@ -2,18 +2,20 @@ package com.sugaas.pomodoro.pomodoro
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.sugaas.pomodoro.databinding.ItemPomodoroBinding
 
-class PomodoroListAdapter(private val dataDelegate: PomodoroListDataDelegate) :
+class PomodoroListAdapter(private val sourceAndDelegate: PomodoroListDataDelegate) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     interface PomodoroListDataDelegate {
-        val item: List<ItemInfo>
+        val items: List<ItemInfo>
         fun onClickItem(item: ItemInfo)
     }
 
-    data class ItemInfo(val doingTime: Int, val restTime:Int)
+    data class ItemInfo(val doingTime: Int, val breakTime: Int, val type: RowType)
+    enum class RowType { ITEM, FOOTER }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -23,14 +25,16 @@ class PomodoroListAdapter(private val dataDelegate: PomodoroListDataDelegate) :
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        dataDelegate.item.getOrNull(position)?.let { item ->
-            (holder as? PomodoroItemViewHolder)?.bind(item, dataDelegate)
+        sourceAndDelegate.items.getOrNull(position)?.let { item ->
+            (holder as? PomodoroItemViewHolder)?.bind(item, sourceAndDelegate)
         }
     }
 
     override fun getItemCount(): Int {
-        return 3
+        return sourceAndDelegate.items.size
     }
 
-
+    override fun getItemViewType(position: Int): Int {
+        return sourceAndDelegate.items.getOrNull(position)?.type?.ordinal ?: RowType.ITEM.ordinal
+    }
 }

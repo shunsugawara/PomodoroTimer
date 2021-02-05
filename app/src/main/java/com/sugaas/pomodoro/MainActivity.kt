@@ -11,17 +11,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 
-class Foo() {
-    fun foo():String {
-        return "foooooooo"
-    }
-
-}
-
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    @Inject lateinit var foo: Foo
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

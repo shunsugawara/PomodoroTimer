@@ -13,5 +13,9 @@ class PomodoroItemViewHolder(private val binding: ItemPomodoroBinding): Recycler
         binding.item = item
         val timeStr = binding.root.context.getString(R.string.doing_time_text, item.doingTime)
         binding.doingTimeText.text = timeStr
+        val breakTimeStr = binding.root.context.getString(R.string.break_time_text, item.breakTime)
+        binding.breakTimeText.text = breakTimeStr
+
+
     }
 }
