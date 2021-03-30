@@ -3,11 +3,9 @@
 
     <item
         android:id="@+id/pomodoro"
-        android:icon="@android:drawable/arrow_up_float"
         android:title="@string/pomodoro" />
 
     <item
         android:id="@+id/expectationOfLife"
-        android:icon="@android:drawable/arrow_down_float"
         android:title="@string/expectation_of_life" />
 </menu>

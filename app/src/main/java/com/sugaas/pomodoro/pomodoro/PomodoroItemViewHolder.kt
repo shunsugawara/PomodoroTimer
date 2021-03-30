@@ -6,16 +6,22 @@ import com.sugaas.pomodoro.databinding.ItemPomodoroBinding
 
 class PomodoroItemViewHolder(private val binding: ItemPomodoroBinding): RecyclerView.ViewHolder(binding.root) {
     fun bind(
-        item: PomodoroListAdapter.ItemInfo,
-        dataDelegate: PomodoroListAdapter.PomodoroListDataDelegate
+        item: PomodoroListAdapter.Row,
+        delegate: PomodoroListAdapter.PomodoroListDataDelegate
     ) {
-        binding.delegate = dataDelegate
-        binding.item = item
-        val timeStr = binding.root.context.getString(R.string.doing_time_text, item.doingTime)
-        binding.doingTimeText.text = timeStr
-        val breakTimeStr = binding.root.context.getString(R.string.break_time_text, item.breakTime)
+        binding.contentNameText.text = item.item.title
+        val timeStr = binding.root.context.getString(R.string.work_time_text, item.item.workTime)
+        binding.workTimeText.text = timeStr
+        val breakTimeStr =
+            binding.root.context.getString(R.string.break_time_text, item.item.breakTime)
         binding.breakTimeText.text = breakTimeStr
 
+        binding.root.setOnClickListener {
+            delegate.onClickRow(item)
+        }
+        binding.removeButton.setOnClickListener {
+            delegate.remove(item)
+        }
 
     }
 }

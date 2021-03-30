@@ -2,19 +2,20 @@ package com.sugaas.pomodoro.pomodoro
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.sugaas.pomodoro.databinding.ItemPomodoroBinding
+import com.sugaas.pomodoro.model.Pomodoro
 
 class PomodoroListAdapter(private val sourceAndDelegate: PomodoroListDataDelegate) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     interface PomodoroListDataDelegate {
-        val items: List<ItemInfo>
-        fun onClickItem(item: ItemInfo)
+        val items: List<Row>
+        fun onClickRow(row: Row)
+        fun remove(row: Row)
     }
 
-    data class ItemInfo(val doingTime: Int, val breakTime: Int, val type: RowType)
+    data class Row(val item: Pomodoro, val type: RowType)
     enum class RowType { ITEM, FOOTER }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

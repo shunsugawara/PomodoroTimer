@@ -7,8 +7,8 @@ import kotlinx.coroutines.flow.Flow
 @Entity
 data class Pomodoro(
     @PrimaryKey(autoGenerate = true) val id: Int,
-    @ColumnInfo(name = "title") val title: String?,
-    @ColumnInfo(name = "focus_time") val focusTime: Int,
+    @ColumnInfo(name = "title") val title: String,
+    @ColumnInfo(name = "work_time") val workTime: Int,
     @ColumnInfo(name = "break_time") val breakTime: Int
 )
 

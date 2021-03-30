@@ -1,42 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:paddingHorizontal="20dp"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-        <variable
-            name="item"
-            type="com.sugaas.pomodoro.pomodoro.PomodoroListAdapter.ItemInfo" />
-        <variable
-            name="delegate"
-            type="com.sugaas.pomodoro.pomodoro.PomodoroListAdapter.PomodoroListDataDelegate" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/contentNameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/primaryVariant"
+        tools:text="pomodoro"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    </data>
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/workTimeText"
+        tools:text="work xx min"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_marginBottom="10dp"
+        android:textColor="@color/secondary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/contentNameText" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/slashText"
+        android:text="@string/slash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="@color/primaryVariant"
+        android:layout_marginStart="20dp"
+        app:layout_constraintBottom_toBottomOf="@id/workTimeText"
+        app:layout_constraintStart_toEndOf="@id/workTimeText"
+        app:layout_constraintTop_toTopOf="@id/workTimeText" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/breakTimeText"
+        tools:text="break xx min"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:textSize="20sp"
+        android:textColor="@color/secondary"
+        app:layout_constraintBottom_toBottomOf="@id/workTimeText"
+        app:layout_constraintStart_toEndOf="@id/slashText"
+        app:layout_constraintTop_toTopOf="@id/workTimeText" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/removeButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@android:drawable/ic_menu_close_clear_cancel"
+        android:backgroundTint="@color/secondaryVariant"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <View
         android:layout_width="match_parent"
-        android:onClick="@{() -> delegate.onClickItem(item)}"
-        android:layout_height="60dp">
+        android:layout_height="2dp"
+        android:background="@color/secondaryVariant"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/doingTimeText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
-            tools:text="take xx min"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/breakTimeText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:textSize="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/doingTimeText"
-            tools:text="break xx min"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+</androidx.constraintlayout.widget.ConstraintLayout>
